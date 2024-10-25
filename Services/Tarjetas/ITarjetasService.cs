@@ -1,4 +1,6 @@
-﻿namespace TarjetasCuentasAPI.Services.Tarjetas
+﻿using TarjetasCuentasAPI.Modelos;
+
+namespace TarjetasCuentasAPI.Services.Tarjetas
 {
     public interface ITarjetasService
     {

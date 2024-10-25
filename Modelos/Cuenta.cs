@@ -1,4 +1,4 @@
-namespace TarjetasCuentasAPI
+namespace TarjetasCuentasAPI.Modelos
 {
     public class Cuenta
     {

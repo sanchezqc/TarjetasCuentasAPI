@@ -1,4 +1,6 @@
 ﻿
+using TarjetasCuentasAPI.Modelos;
+
 namespace TarjetasCuentasAPI.Services.Tarjetas
 {
     public class TarjetasService : ITarjetasService
