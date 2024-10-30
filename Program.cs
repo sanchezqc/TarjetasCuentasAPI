@@ -1,5 +1,6 @@
 
 using TarjetasCuentasAPI.Services.Clientes;
+using TarjetasCuentasAPI.Services.Cuentas;
 using TarjetasCuentasAPI.Services.Tarjetas;
 
 namespace TarjetasCuentasAPI
@@ -17,6 +18,7 @@ namespace TarjetasCuentasAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<ITarjetasService, TarjetasService>();
+            builder.Services.AddSingleton<ICuentasService, CuentasService>();
             builder.Services.AddSingleton<IClientesService, ClientesService>();
 
             var app = builder.Build();

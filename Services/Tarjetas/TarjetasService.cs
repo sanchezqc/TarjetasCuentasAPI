@@ -63,7 +63,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public List<Tarjeta> ObtengaTarjetasPorEstado(string elEstadoBuscado)
         {
-            List<Tarjeta> lasTarjetasBuscadas = DatosInventados.Where(a => a.Estado == elEstadoBuscado).ToList();
+            List<Tarjeta> lasTarjetasBuscadas = DatosInventados.Where(a => a.Estado.ToLower() == elEstadoBuscado.ToLower()).ToList();
             if (lasTarjetasBuscadas == null || lasTarjetasBuscadas.Count == 0)
             {
                 return new List<Tarjeta>();
@@ -74,6 +74,16 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
         {
             if (DatosInventados == null) return new List<Tarjeta>();
             return DatosInventados;
+        }
+
+        public List<Tarjeta> ObtengaTarjetasPorEstado(int elIdCliente)
+        {
+            List<Tarjeta> lasTarjetasBuscadas = DatosInventados.Where(a => a.IdCliente == elIdCliente).ToList();
+            if (lasTarjetasBuscadas == null || lasTarjetasBuscadas.Count == 0)
+            {
+                return new List<Tarjeta>();
+            }
+            return lasTarjetasBuscadas;
         }
     }
 }
