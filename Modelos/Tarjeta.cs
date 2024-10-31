@@ -11,7 +11,7 @@ namespace Modelos
         public string? Numero { get; set; }
         public string? Emisor { get; set; }
         public int IdCliente { get; set; }
-        public Cliente Cliente{ get; set; }
+        public virtual Cliente Cliente { get; set; }
         public string? Estado { get; set; }
     }
 }

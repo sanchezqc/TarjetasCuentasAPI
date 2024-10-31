@@ -1,46 +1,29 @@
-﻿using Modelos;
-using TarjetasCuentasAPI.Services.Cuentas;
-using TarjetasCuentasAPI.Services.Tarjetas;
+﻿using AccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Modelos;
 
 namespace TarjetasCuentasAPI.Services.Clientes
 {
     public class ClientesService : IClientesService
     {
-        List<Cliente> DatosInventados;
-        private readonly ITarjetasService ITarjetasService;
-        private readonly ICuentasService ICuentasService;
-        public ClientesService(ITarjetasService _ITarjetaService, ICuentasService _ICuentasService)
+        private readonly BancoContext bancoContext;
+        public ClientesService(BancoContext _bancoContext)
         {
-            ITarjetasService = _ITarjetaService;
-            ICuentasService = _ICuentasService;
-            DatosInventados = new List<Cliente>();
-            DatosInventados.Add(new Cliente("Pedro", 1, ITarjetasService.ObtengaTarjetas(), ICuentasService.ObtengaTodasLasCuentas()));
-
+            bancoContext = _bancoContext;
         }
         public Cliente ObtengaClientePorId(int id)
         {
-            RefresqueDatos();
-            return DatosInventados.FirstOrDefault(x => x.Id == id);
+            return bancoContext.Clientes.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Cuenta> ObtengaCuentasPorCliente(int idCliente)
         {
-            RefresqueDatos();
-            return DatosInventados.FirstOrDefault(x => x.Id == idCliente).Cuentas;
+            return bancoContext.Clientes.FirstOrDefault(x => x.Id == idCliente).Cuentas;
         }
 
         public List<Tarjeta> ObtengaTarjetasPorCliente(int idCliente)
         {
-            RefresqueDatos();
-            return DatosInventados.FirstOrDefault(x => x.Id == idCliente).Tarjetas;
-        }
-        private void RefresqueDatos()
-        {
-            foreach (var item in DatosInventados)
-            {
-                item.Tarjetas = ITarjetasService.ObtengaTarjetas();
-                item.Cuentas = ICuentasService.ObtengaTodasLasCuentas();
-            }
+            return bancoContext.Clientes.Include(c => c.Tarjetas).FirstOrDefault(x => x.Id == idCliente).Tarjetas.ToList();
         }
     }
 }

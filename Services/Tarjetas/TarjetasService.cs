@@ -36,8 +36,8 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public Tarjeta CreeLaTarjeta(Tarjeta laTarjeta)
         {
-            int elMaximoID = bancoContext.Tarjetas.Max(a => a.Id);
             bancoContext.Tarjetas.Add(laTarjeta);
+            bancoContext.SaveChanges();
             return laTarjeta;
         }
 
