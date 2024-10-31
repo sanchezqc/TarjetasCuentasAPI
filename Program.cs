@@ -20,7 +20,7 @@ namespace TarjetasCuentasAPI
 
             builder.Services.AddDbContext<BancoContext>(options =>
             {
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cursoB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bccr;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
             });
 
 
