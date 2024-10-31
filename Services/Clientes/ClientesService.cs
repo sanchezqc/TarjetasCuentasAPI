@@ -1,4 +1,4 @@
-﻿using TarjetasCuentasAPI.Modelos;
+﻿using Modelos;
 using TarjetasCuentasAPI.Services.Cuentas;
 using TarjetasCuentasAPI.Services.Tarjetas;
 

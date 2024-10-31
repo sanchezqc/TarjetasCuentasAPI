@@ -2,9 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Abstracciones\**" />
+    <Compile Remove="AccesoDatos\**" />
+    <Content Remove="Abstracciones\**" />
+    <Content Remove="AccesoDatos\**" />
+    <EmbeddedResource Remove="Abstracciones\**" />
+    <EmbeddedResource Remove="AccesoDatos\**" />
+    <None Remove="Abstracciones\**" />
+    <None Remove="AccesoDatos\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -13,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj" />
+    <ProjectReference Include="Abstracciones\Abstracciones.csproj" />
+    <ProjectReference Include="AccesoDatos\AccesoDatos.csproj" />
   </ItemGroup>
 
 </Project>

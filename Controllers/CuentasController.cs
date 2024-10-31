@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using TarjetasCuentasAPI.Modelos;
+using Modelos;
 using TarjetasCuentasAPI.Services.Cuentas;
 
 namespace TarjetasCuentasAPI.Controllers

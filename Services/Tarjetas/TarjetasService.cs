@@ -1,6 +1,5 @@
-﻿
-using AccesoDatos;
-using TarjetasCuentasAPI.Modelos;
+﻿using AccesoDatos;
+using Modelos;
 
 namespace TarjetasCuentasAPI.Services.Tarjetas
 {
@@ -13,9 +12,10 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
         {
             bancoContext = _bancoContext;   
         }
+
         public bool ActualiceLaTarjeta(Tarjeta laTarjeta, int elIdTarjeta)
         {
-            Tarjeta? laTarjetaPorActualizar = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
+            Tarjeta laTarjetaPorActualizar = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             //var algo = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             if (laTarjetaPorActualizar == null)
             {

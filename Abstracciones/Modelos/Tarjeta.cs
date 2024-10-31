@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace TarjetasCuentasAPI.Modelos
+namespace Modelos
 {
     public class Tarjeta
     {

@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Components.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Text.Json.Serialization;
 
-namespace TarjetasCuentasAPI.Modelos
+namespace Modelos
 {
     public class Cuenta
     {

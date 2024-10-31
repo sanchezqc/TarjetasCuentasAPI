@@ -1,4 +1,4 @@
-﻿using TarjetasCuentasAPI.Modelos;
+﻿using Modelos;
 
 namespace TarjetasCuentasAPI.Services.Clientes
 {
