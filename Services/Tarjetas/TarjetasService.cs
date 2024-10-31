@@ -6,12 +6,6 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
     public class TarjetasService : ITarjetasService
     {
         public List<Tarjeta> DatosInventados { get; set; }
-        public TarjetasService() { 
-            DatosInventados = new List<Tarjeta>();
-            DatosInventados.Add(new Tarjeta(1, 1));
-            DatosInventados.Add(new Tarjeta(1, 2));
-            DatosInventados.Add(new Tarjeta(2,3));
-        }
         public bool ActualiceLaTarjeta(Tarjeta laTarjeta, int elIdTarjeta)
         {
             Tarjeta laTarjetaPorActualizar = DatosInventados.FirstOrDefault(a => a.Id == elIdTarjeta);
@@ -35,7 +29,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
         public Tarjeta CreeLaTarjeta(Tarjeta laTarjeta)
         {
             int elMaximoID = DatosInventados.Max(a => a.Id);
-            laTarjeta = new Tarjeta(laTarjeta.IdCliente, elMaximoID + 1);
+            laTarjeta = new Tarjeta();//(laTarjeta.IdCliente, elMaximoID + 1);
             DatosInventados.Add(laTarjeta);
             return laTarjeta;
         }

@@ -10,9 +10,6 @@ namespace TarjetasCuentasAPI.Services.Cuentas
         public CuentasService()
         {
             DatosInventados = new List<Cuenta>();
-            DatosInventados.Add(new Cuenta(1, 1));
-            DatosInventados.Add(new Cuenta(1, 2));
-            DatosInventados.Add(new Cuenta(2, 3));
         }
 
         public List<Cuenta> ObtengaCuentasPorIdCliente(int elIdCliente)
@@ -48,7 +45,7 @@ namespace TarjetasCuentasAPI.Services.Cuentas
         public Cuenta CreeLaCuenta(Cuenta laCuenta)
         {
             int elMaximoID = DatosInventados.Max(a => a.Id);
-            Cuenta laCuentaCreada = new Cuenta(laCuenta.IdCliente, elMaximoID + 1);
+            Cuenta laCuentaCreada = new Cuenta(); //(laCuenta.IdCliente, elMaximoID + 1);
             DatosInventados.Add(laCuentaCreada);
             return laCuentaCreada;
         }
