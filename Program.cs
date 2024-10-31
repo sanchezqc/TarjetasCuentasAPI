@@ -1,7 +1,8 @@
-
 using TarjetasCuentasAPI.Services.Clientes;
 using TarjetasCuentasAPI.Services.Cuentas;
 using TarjetasCuentasAPI.Services.Tarjetas;
+using AccesoDatos;
+using Microsoft.EntityFrameworkCore;
 
 namespace TarjetasCuentasAPI
 {
@@ -17,9 +18,17 @@ namespace TarjetasCuentasAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddSingleton<ITarjetasService, TarjetasService>();
-            builder.Services.AddSingleton<ICuentasService, CuentasService>();
-            builder.Services.AddSingleton<IClientesService, ClientesService>();
+            builder.Services.AddDbContext<BancoContext>(options =>
+            {
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cursoB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            });
+
+
+
+            builder.Services.AddScoped<ITarjetasService, TarjetasService>();
+            builder.Services.AddScoped<ICuentasService, CuentasService>();
+            builder.Services.AddScoped<IClientesService, ClientesService>();
+
 
             var app = builder.Build();
 

@@ -1,14 +1,22 @@
 ﻿
+using AccesoDatos;
 using TarjetasCuentasAPI.Modelos;
 
 namespace TarjetasCuentasAPI.Services.Tarjetas
 {
     public class TarjetasService : ITarjetasService
     {
-        public List<Tarjeta> DatosInventados { get; set; }
+        private readonly BancoContext bancoContext;
+        private List<Tarjeta> DatosInventados;
+
+        public TarjetasService(BancoContext _bancoContext)
+        {
+            bancoContext = _bancoContext;   
+        }
         public bool ActualiceLaTarjeta(Tarjeta laTarjeta, int elIdTarjeta)
         {
-            Tarjeta laTarjetaPorActualizar = DatosInventados.FirstOrDefault(a => a.Id == elIdTarjeta);
+            Tarjeta? laTarjetaPorActualizar = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
+            //var algo = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             if (laTarjetaPorActualizar == null)
             {
                 return false;
