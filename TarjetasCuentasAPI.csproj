@@ -23,8 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj" />
-    <ProjectReference Include="Abstracciones\Abstracciones.csproj" />
-    <ProjectReference Include="AccesoDatos\AccesoDatos.csproj" />
   </ItemGroup>
 
 </Project>

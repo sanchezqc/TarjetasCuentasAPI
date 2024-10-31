@@ -16,7 +16,6 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
         public bool ActualiceLaTarjeta(Tarjeta laTarjeta, int elIdTarjeta)
         {
             Tarjeta laTarjetaPorActualizar = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
-            //var algo = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             if (laTarjetaPorActualizar == null)
             {
                 return false;
@@ -55,7 +54,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public Tarjeta ObtengaTarjetaPorID(int elIdTarjeta)
         {
-            Tarjeta laTarjetaBuscada = DatosInventados.FirstOrDefault(a => a.Id == elIdTarjeta);
+            Tarjeta laTarjetaBuscada = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             if (laTarjetaBuscada == null)
             {
                 return null;
