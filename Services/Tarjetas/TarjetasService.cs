@@ -7,7 +7,6 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
     public class TarjetasService : ITarjetasService
     {
         private readonly BancoContext bancoContext;
-        private List<Tarjeta> DatosInventados;
 
         public TarjetasService(BancoContext _bancoContext)
         {
@@ -44,7 +43,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public bool ElimineLaTarjeta(int elIdTarjeta)
         {
-            Tarjeta laTarjetaAEliminar = DatosInventados.FirstOrDefault(a => a.Id == elIdTarjeta);
+            Tarjeta laTarjetaAEliminar = bancoContext.Tarjetas.FirstOrDefault(a => a.Id == elIdTarjeta);
             if (laTarjetaAEliminar == null)
             {
                 return false;
@@ -75,8 +74,8 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
         }
         public List<Tarjeta> ObtengaTarjetas()
         {
-            if (DatosInventados == null) return new List<Tarjeta>();
-            return DatosInventados;
+            if (!bancoContext.Tarjetas.Any()) return new List<Tarjeta>();
+            return bancoContext.Tarjetas.ToList();
         }
 
         public List<Tarjeta> ObtengaTarjetasPorCliente(int elIdCliente)
