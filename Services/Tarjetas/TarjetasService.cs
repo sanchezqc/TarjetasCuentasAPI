@@ -1,4 +1,5 @@
 ﻿using AccesoDatos;
+using Microsoft.EntityFrameworkCore;
 using Modelos;
 
 namespace TarjetasCuentasAPI.Services.Tarjetas
@@ -21,6 +22,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
                 return false;
             }
             ActualiceLosCampos(laTarjeta, laTarjetaPorActualizar);
+            bancoContext.SaveChanges();
             return true;
         }
 
@@ -35,9 +37,8 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public Tarjeta CreeLaTarjeta(Tarjeta laTarjeta)
         {
-            int elMaximoID = DatosInventados.Max(a => a.Id);
-            laTarjeta = new Tarjeta();//(laTarjeta.IdCliente, elMaximoID + 1);
-            DatosInventados.Add(laTarjeta);
+            int elMaximoID = bancoContext.Tarjetas.Max(a => a.Id);
+            bancoContext.Tarjetas.Add(laTarjeta);
             return laTarjeta;
         }
 
@@ -48,7 +49,8 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
             {
                 return false;
             }
-            DatosInventados.Remove(laTarjetaAEliminar);
+            bancoContext.Tarjetas.Remove(laTarjetaAEliminar);
+            bancoContext.SaveChanges();
             return true;
         }
 
@@ -64,7 +66,7 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
 
         public List<Tarjeta> ObtengaTarjetasPorEstado(string elEstadoBuscado)
         {
-            List<Tarjeta> lasTarjetasBuscadas = DatosInventados.Where(a => a.Estado.ToLower() == elEstadoBuscado.ToLower()).ToList();
+            List<Tarjeta> lasTarjetasBuscadas = bancoContext.Tarjetas.Where(a => a.Estado.ToLower() == elEstadoBuscado.ToLower()).ToList();
             if (lasTarjetasBuscadas == null || lasTarjetasBuscadas.Count == 0)
             {
                 return new List<Tarjeta>();
@@ -77,14 +79,19 @@ namespace TarjetasCuentasAPI.Services.Tarjetas
             return DatosInventados;
         }
 
-        public List<Tarjeta> ObtengaTarjetasPorEstado(int elIdCliente)
+        public List<Tarjeta> ObtengaTarjetasPorCliente(int elIdCliente)
         {
-            List<Tarjeta> lasTarjetasBuscadas = DatosInventados.Where(a => a.IdCliente == elIdCliente).ToList();
+            List<Tarjeta> lasTarjetasBuscadas = bancoContext.Tarjetas.Where(a => a.IdCliente == elIdCliente).ToList();
             if (lasTarjetasBuscadas == null || lasTarjetasBuscadas.Count == 0)
             {
                 return new List<Tarjeta>();
             }
             return lasTarjetasBuscadas;
+        }
+
+        public void Migracion()
+        {
+            bancoContext.Database.EnsureCreated();
         }
     }
 }
