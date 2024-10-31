@@ -37,6 +37,13 @@ namespace TarjetasCuentasAPI.Controllers
             return Ok(lasTarjetas);
         }
 
+        [HttpGet("/inicialice")]
+        public ActionResult<List<Tarjeta>> Inicialice()
+        {
+            tarjetasService.Migracion();
+            return Ok();
+        }
+
         //[HttpGet("/estado")]
         //public ActionResult<List<Tarjeta>> Get(string elEstado)
         //{
