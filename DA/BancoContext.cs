@@ -61,11 +61,11 @@ namespace AccesoDatos
 
             // Configuración de Tarjeta
             modelBuilder.Entity<Tarjeta>().HasData(
-                new Tarjeta { Id = 1, Numero = "4111111111111111", FechaVencimiento = new DateTime(2025, 12, 31) },
-                new Tarjeta { Id = 2, Numero = "4222222222222222", FechaVencimiento = new DateTime(2024, 11, 30) },
-                new Tarjeta { Id = 3, Numero = "4333333333333333", FechaVencimiento = new DateTime(2023, 10, 31) },
-                new Tarjeta { Id = 4, Numero = "4444444444444444", FechaVencimiento = new DateTime(2025, 01, 15) },
-                new Tarjeta { Id = 5, Numero = "4555555555555555", FechaVencimiento = new DateTime(2026, 07, 29) }
+                new Tarjeta { Id = 1, Numero = "4111111111111111", FechaVencimiento = new DateTime(2025, 12, 31), IdCliente = 1, Emisor = "VISA", Estado = "ACTIVA" },
+                new Tarjeta { Id = 2, Numero = "4222222222222222", FechaVencimiento = new DateTime(2024, 11, 30), IdCliente = 1, Emisor = "VISA", Estado = "ACTIVA" },
+                new Tarjeta { Id = 3, Numero = "4333333333333333", FechaVencimiento = new DateTime(2023, 10, 31), IdCliente = 2, Emisor = "VISA", Estado = "ACTIVA" },
+                new Tarjeta { Id = 4, Numero = "4444444444444444", FechaVencimiento = new DateTime(2025, 01, 15), IdCliente = 2, Emisor = "VISA", Estado = "ACTIVA" },
+                new Tarjeta { Id = 5, Numero = "4555555555555555", FechaVencimiento = new DateTime(2026, 07, 29), IdCliente = 3, Emisor = "VISA", Estado = "ACTIVA" }
             );
         }
     }
