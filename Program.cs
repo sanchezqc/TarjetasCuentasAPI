@@ -19,10 +19,10 @@ namespace TarjetasCuentasAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            //builder.Services.AddDbContext<BancoContext>(p=> p.UseInMemoryDatabase("Bccr"));
             builder.Services.AddDbContext<BancoContext>(options =>
             {
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bccr;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=curso;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
             });
 
 
