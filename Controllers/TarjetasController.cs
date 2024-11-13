@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Modelos;
+using TarjetasCuentasAPI.Modelos;
 using TarjetasCuentasAPI.Services.Tarjetas;
 
 namespace TarjetasCuentasAPI.Controllers
@@ -18,16 +19,26 @@ namespace TarjetasCuentasAPI.Controllers
         }
 
         [HttpGet("{idTarjeta}")]
-        public ActionResult<Tarjeta> Get(int idTarjeta)
+        public ActionResult<ApiResponse<Tarjeta>> Get(int idTarjeta)
         {
             Tarjeta tarjeta= tarjetasService.ObtengaTarjetaPorID(idTarjeta);
             if(tarjeta != null)
             {
-                return Ok(tarjeta);
+                return Ok(new ApiResponse<Tarjeta> { 
+                    Data = tarjeta, 
+                    Code = 200, 
+                    Message = "", 
+                    Status = "OK"}
+                );
             }
             else
             {
-                return NotFound("Tarjeta no encontrada");
+                return NotFound(new ApiResponse<Tarjeta> { 
+                    Data = null,
+                    Code = 404,
+                    Message = "Tarjeta no encontrada",
+                    Status = "Error"
+                });
             }
         }
         [HttpGet()]

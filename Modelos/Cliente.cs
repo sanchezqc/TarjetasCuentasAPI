@@ -12,5 +12,6 @@ namespace Modelos
         public string? Nombre { get; set; }
         public List<Cuenta> Cuentas { get; set; }
         public virtual ICollection<Tarjeta> Tarjetas { get; set; }
+        public string? Direccion { get; set; }
     }
 }
