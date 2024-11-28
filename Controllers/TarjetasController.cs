@@ -12,6 +12,7 @@ namespace TarjetasCuentasAPI.Controllers
         private readonly ILogger<TarjetasController> _logger;
         private readonly ITarjetasService tarjetasService;
 
+
         public TarjetasController(ILogger<TarjetasController> logger, ITarjetasService _tarjetasService)
         {
             _logger = logger;
@@ -111,3 +112,12 @@ namespace TarjetasCuentasAPI.Controllers
         }
     }
 }
+
+
+/*
+ * [HttpGet("/ClienteAPI")]
+        public ActionResult<string> ClienteAPI()
+        {
+            tarjetasService.Migracion();
+            return Ok();
+        }*/
