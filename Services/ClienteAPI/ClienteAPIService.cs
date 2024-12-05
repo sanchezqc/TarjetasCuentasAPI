@@ -58,6 +58,23 @@ namespace TarjetasCuentasAPI.Services.ClienteAPIService
             }
         }
 
+        public async Task<ResponseDogDtoV2> TestHttpStaticDogsV2()
+        {
+            try
+            {
+                string responseBody = await _httpClient.GetStringAsync("https://dog.ceo/api/breed/hound/afghan/images/random");
+                ResponseDogDtoV2 res = JsonSerializer.Deserialize<ResponseDogDtoV2>(responseBody);
+                Console.WriteLine(res);
+                return res;
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+                return null;
+            }
+        }
+
         public async Task<string> TestHttpStaticAll()
         {
             try
@@ -91,6 +108,13 @@ namespace TarjetasCuentasAPI.Services.ClienteAPIService
     public class ResponseDogDto
     {
         public string message { get; set; }
+        public string status { get; set; }
+    }
+
+    public class ResponseDogDtoV2
+    {
+        public string message { get; set; }
+        public string messageV2 { get; set; }
         public string status { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace TarjetasCuentasAPI.Services.ClienteAPIService
     {
         Task<UserDto> TestHttpStatic();
         Task<ResponseDogDto> TestHttpStaticDogs();
+        Task<ResponseDogDtoV2> TestHttpStaticDogsV2();
         Task<string> TestHttpStaticAll();
     }
 }
