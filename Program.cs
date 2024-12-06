@@ -99,7 +99,7 @@ namespace TarjetasCuentasAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseAuthorization();
             // se deben colocar los middleware custom de ultimos 
             //app.UseTimeMiddleware();
